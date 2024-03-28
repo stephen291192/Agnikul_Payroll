@@ -1,0 +1,14 @@
+{
+  "name": "devapp",
+  "version": "1.0.0",
+  "description": "Frappe app for development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cd React_App && yarn dev",
+    "build": "cd React_App && yarn build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
