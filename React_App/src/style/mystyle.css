@@ -5,11 +5,11 @@
 }
 body {
   background-color: #effaef !important;
-  font-family: "Roboto";
+  font-family: "Nunito Sans", sans-serif;
 }
 main {
   padding: 25px 25px;
-  background: #ffffff;
+  /* background: #ffffff; */
   margin: 10px;
   border-radius: 5px;
 }
@@ -20,22 +20,19 @@ main {
   height: 100vh;
   width: 300px;
   overflow-y: auto;
-  box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.9);
+  /* box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.9); */
 }
+
 .top-section {
   display: flex;
   align-items: center;
-  padding: 30px 10px;
-  justify-content: space-around;
+  padding: 15px 5px;
+  justify-content: flex-start;
 }
 .logo {
   font-size: 25px;
 }
-.bars {
-  font-size: 20px;
-  /* display: flex; */
-  margin-left: 35px;
-}
+
 .links {
   display: flex;
   color: #4d8c52;
@@ -52,6 +49,7 @@ main {
   background-color: #4d8c52;
   color: #ffffff;
 }
+
 .link-text {
   font-size: 15px;
   font-weight: 500;
@@ -59,7 +57,22 @@ main {
 
 .icon {
   font-size: 20px;
+  padding: 10px;
 }
+.menuName {
+  font-size: 16px;
+  position: relative;
+  top: -5px;
+}
+
+.menu {
+  /* background-color: #ffffff; */
+  /* color: rgb(0, 0, 0); */
+}
+/* .menu:hover {
+  background-color: rgb(5, 179, 43);
+  color: #000;
+} */
 
 .headerContainer {
   background-color: rgb(255, 255, 255);
@@ -81,7 +94,9 @@ main {
 .cusor-pointer {
   cursor: pointer;
 }
-
+.avatarpic img {
+  width: 30px;
+}
 .bodyContent {
   background-color: #ffffff;
   padding: 10px;
