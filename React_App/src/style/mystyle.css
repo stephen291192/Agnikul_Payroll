@@ -12,8 +12,15 @@ main {
   /* background: #ffffff; */
   margin: 10px;
   border-radius: 5px;
+  /* position: absolute; */
 }
-
+.HeaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border-bottom: 1px solid #d1d1d1;
+}
 .sidebar {
   background-color: #ffffff;
   color: #4d8c52;
@@ -28,6 +35,7 @@ main {
   align-items: center;
   padding: 15px 5px;
   justify-content: flex-start;
+  margin-top: 50px;
 }
 .logo {
   font-size: 25px;
@@ -62,7 +70,13 @@ main {
 .menuName {
   font-size: 16px;
   position: relative;
-  top: -5px;
+  top: -3px;
+  left: 10px;
+  /* color: #5b5b5b; */
+  font-weight: 600;
+}
+.submenuName1 {
+  padding: 10px 30px;
 }
 
 .menu {
@@ -119,7 +133,13 @@ main {
 .avatar {
   margin-right: 10px; /* Adjust the margin as needed */
 }
-
+.payrollText {
+  /* position: relative;
+  right: 370px; */
+  font-weight: 600;
+  font-size: 18px;
+  /* color: ; */
+}
 .avatar-img {
   width: 40px; /* Adjust the width as needed */
   height: 40px; /* Adjust the height as needed */
@@ -158,4 +178,7 @@ main {
   border-color: #4d8b52 !important;
   outline: 0;
   box-shadow: 0 0 0 0.2px rgb(77 140 31) !important;
+}
+
+.sibeBarWrapper {
 }

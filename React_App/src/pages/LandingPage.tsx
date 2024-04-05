@@ -1,5 +1,10 @@
 import { Box } from "@mui/material";
 import React from "react";
+import Picture from "../assets/picture1.png";
+import Picture1 from "../assets/pic1.png";
+import Picture2 from "../assets/pic2.png";
+
+import { Card, CardContent, Typography, Grid } from "@mui/material";
 
 interface AboutProps {
   darkMode: boolean;
@@ -7,21 +12,147 @@ interface AboutProps {
 
 const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
   return (
-    <Box
-      sx={{
-        color: darkMode ? "#FFF" : "#000",
-      }}
-    >
-      <div className="">
-        <p className="title">Good Morning Raja ! </p>
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" }, // Stack on small screens, align in row on medium screens
+          justifyContent: "space-between",
+          alignItems: "center",
+          // zIndex: "2",
+          color: darkMode ? "#FFF" : "#000",
+          bgcolor: darkMode ? "" : "#effaef",
+          textAlign: { xs: "center", md: "left" }, // Center text on small screens, align left on medium screens
+        }}
+      >
+        <div>
+          <Box className="title">
+            Good Morning{" "}
+            <Box
+              component="span"
+              sx={{
+                display: "inline-block",
+                animation: "zoomInOut 2s ease infinite",
+              }}
+            >
+              Rajesh !
+            </Box>{" "}
+          </Box>
 
-        <p className="Subtitle">
-          Life is 10% what happens to us and 90% how we react to it
-        </p>
-        <span>- DENNIS P. KIMBRO </span>
-      </div>
-      <div></div>
-    </Box>
+          <Box
+            className="Subtitle"
+            sx={{
+              color: darkMode ? "#FFF" : "", // Conditionally apply color based on dark mode
+              textAlign: { xs: "center", md: "left" }, // Center text on small screens, align left on medium screens
+            }}
+          >
+            Life is 10% what happens to us and 90% how we react to it
+          </Box>
+          <span className="titleAut">- DENNIS P. KIMBRO</span>
+        </div>
+        <div>
+          <Box
+            sx={{
+              textAlign: { xs: "center", md: "right" }, // Center image on small screens, align right on medium screens
+            }}
+          >
+            <img src={Picture} alt="Small Logo" width="130px" />
+          </Box>
+        </div>
+      </Box>
+      <br />
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6} md={4} sx={{}}>
+          <Card
+            sx={{
+              bgcolor: darkMode ? "#222222" : "#FFF",
+              color: darkMode ? "#fff" : "#000",
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+            }}
+          >
+            <CardContent>
+              <Typography>Policy</Typography>
+              <Typography color="textSecondary">
+                <img
+                  src={Picture1}
+                  className="landingPic"
+                  alt="Landing Picture"
+                />
+              </Typography>
+            </CardContent>
+            <span className="view">View All</span>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card
+            sx={{
+              bgcolor: darkMode ? "#222222" : "#FFF",
+              color: darkMode ? "#fff" : "#000",
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+            }}
+          >
+            <CardContent>
+              <Typography>No of Request</Typography>
+              <Typography color="textSecondary">
+                <img
+                  src={Picture2}
+                  className="landingPic"
+                  alt="Landing Picture"
+                />
+              </Typography>
+            </CardContent>
+            <span className="view">View All</span>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card
+            sx={{
+              bgcolor: darkMode ? "#222222" : "#FFF",
+              color: darkMode ? "#fff" : "#000",
+              display: "flex",
+              flexDirection: "row",
+              //   height: "100%",
+            }}
+          >
+            <CardContent>
+              <p>Announcements</p>
+              <span color="textSecondary" className="listName">
+                <li>Leave for Jan 20 2024 is Approved </li>
+                <li>Reimbursement Bill has to be attached clearly </li>
+                <li>Reimbursement Bill has to be attached clearly </li>
+                <li>Reimbursement Bill has to be attached clearly </li>
+              </span>
+              <span className="view">View All</span>
+            </CardContent>
+          </Card>
+          <br />
+          <Card
+            sx={{
+              bgcolor: darkMode ? "#222222" : "#FFF",
+              color: darkMode ? "#fff" : "#000",
+              display: "flex",
+              flexDirection: "row",
+              //   height: "100%",
+            }}
+          >
+            <CardContent>
+              <p>Upcoming Holiday</p>
+              <span color="textSecondary" className="listName">
+                <li>Leave for Jan 20 2024 is Approved </li>
+                <li>Reimbursement Bill has to be attached clearly </li>
+                <li>Reimbursement Bill has to be attached clearly </li>
+                <li>Reimbursement Bill has to be attached clearly </li>
+              </span>
+              <span className="view">View All</span>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </>
   );
 };
 

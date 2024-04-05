@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 import "./style/mystyle.css";
 import "./pages/LandingPage.css";
+import "./style/animation.css";
 import { FrappeProvider } from "frappe-react-sdk";
 import Header from "./component/Header.tsx";
 import SideBar from "./component/SideBar.tsx";
@@ -14,9 +15,44 @@ const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(true);
 
+  // Disable right-click close browser tools
+  // -------------- Start ---------------
+  // useEffect(() => {
+  //   const handleKeyDown = (event) => {
+  //     if (
+  //       event.keyCode === 123 ||
+  //       event.keyCode === 85 ||
+  //       (event.ctrlKey && event.shiftKey && event.keyCode === 73) ||
+  //       (event.ctrlKey && event.shiftKey && event.keyCode === 74) ||
+  //       (event.ctrlKey && event.shiftKey && event.keyCode === 67)
+  //     ) {
+  //       event.preventDefault();
+  //     }
+  //   };
+
+  // Disable F12 and Ctrl+Shift+I
+  //   window.addEventListener("keydown", handleKeyDown);
+
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, []);
+  // useEffect(() => {
+  //   const handleContextMenu = (event) => {
+  //     event.preventDefault();
+  //   };
+  //   window.addEventListener("contextmenu", handleContextMenu);
+  //   return () => {
+  //     window.removeEventListener("contextmenu", handleContextMenu);
+  //   };
+  // }, []);
+
+  // ---------Browser Tool END ------------------
+
   const toggleMenu = () => {
     setIsOpenMenu((prevMenuState) => !prevMenuState);
   };
+
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
