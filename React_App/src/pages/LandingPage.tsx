@@ -3,6 +3,7 @@ import React from "react";
 import Picture from "../assets/picture1.png";
 import Picture1 from "../assets/pic1.png";
 import Picture2 from "../assets/pic2.png";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { Card, CardContent, Typography, Grid } from "@mui/material";
 
@@ -11,6 +12,8 @@ interface AboutProps {
 }
 
 const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
+  const isTablet = useMediaQuery("(min-width: 600px) and (max-width: 1024px)");
+
   return (
     <>
       <Box
@@ -61,15 +64,18 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
         </div>
       </Box>
       <br />
+
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6} md={4} sx={{}}>
           <Card
+            className="slideFromLeft"
             sx={{
               bgcolor: darkMode ? "#222222" : "#FFF",
               color: darkMode ? "#fff" : "#000",
               display: "flex",
               flexDirection: "column",
               height: "100%",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
           >
             <CardContent>
@@ -87,12 +93,14 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Card
+            className="slideFromBottom"
             sx={{
               bgcolor: darkMode ? "#222222" : "#FFF",
               color: darkMode ? "#fff" : "#000",
               display: "flex",
               flexDirection: "column",
               height: "100%",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
           >
             <CardContent>
@@ -109,47 +117,63 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
           </Card>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
-          <Card
-            sx={{
-              bgcolor: darkMode ? "#222222" : "#FFF",
-              color: darkMode ? "#fff" : "#000",
-              display: "flex",
-              flexDirection: "row",
-              //   height: "100%",
-            }}
+          <Grid
+            container
+            spacing={3}
+            direction="column"
+            sx={{ width: isTablet ? "500px" : "auto" }}
           >
-            <CardContent>
-              <p>Announcements</p>
-              <span color="textSecondary" className="listName">
-                <li>Leave for Jan 20 2024 is Approved </li>
-                <li>Reimbursement Bill has to be attached clearly </li>
-                <li>Reimbursement Bill has to be attached clearly </li>
-                <li>Reimbursement Bill has to be attached clearly </li>
-              </span>
-              <span className="view">View All</span>
-            </CardContent>
-          </Card>
-          <br />
-          <Card
-            sx={{
-              bgcolor: darkMode ? "#222222" : "#FFF",
-              color: darkMode ? "#fff" : "#000",
-              display: "flex",
-              flexDirection: "row",
-              //   height: "100%",
-            }}
-          >
-            <CardContent>
-              <p>Upcoming Holiday</p>
-              <span color="textSecondary" className="listName">
-                <li>Leave for Jan 20 2024 is Approved </li>
-                <li>Reimbursement Bill has to be attached clearly </li>
-                <li>Reimbursement Bill has to be attached clearly </li>
-                <li>Reimbursement Bill has to be attached clearly </li>
-              </span>
-              <span className="view">View All</span>
-            </CardContent>
-          </Card>
+            <Grid item xs={12} md={12}>
+              <Card
+                className="slideFromTop"
+                sx={{
+                  bgcolor: darkMode ? "#222222" : "#FFF",
+                  color: darkMode ? "#fff" : "#000",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                }}
+              >
+                <CardContent>
+                  <p>Announcements</p>
+                  <span color="textSecondary" className="listName">
+                    <li>Leave for Jan 20 2024 is Approved </li>
+                    <li>Reimbursement Bill has to be attached clearly </li>
+                    <li>Reimbursement Bill has to be attached clearly </li>
+                    <li>Reimbursement Bill has to be attached clearly </li>
+                  </span>
+                  <span className="view">View All</span>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={12}>
+              {" "}
+              {/* Adjusted md prop to 12 */}
+              <Card
+                className="slideFromRight"
+                sx={{
+                  bgcolor: darkMode ? "#222222" : "#FFF",
+                  color: darkMode ? "#fff" : "#000",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                }}
+              >
+                <CardContent>
+                  <p>Upcoming Holiday</p>
+                  <span color="textSecondary" className="listName">
+                    <li>Leave for Jan 20 2024 is Approved </li>
+                    <li>Reimbursement Bill has to be attached clearly </li>
+                    <li>Reimbursement Bill has to be attached clearly </li>
+                    <li>Reimbursement Bill has to be attached clearly </li>
+                  </span>
+                  <span className="view">View All</span>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </>

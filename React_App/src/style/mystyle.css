@@ -8,18 +8,23 @@ body {
   font-family: "Nunito Sans", sans-serif;
 }
 main {
-  padding: 25px 25px;
+  padding: 20px 25px;
   /* background: #ffffff; */
-  margin: 10px;
+  margin: 20px;
   border-radius: 5px;
   /* position: absolute; */
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 .HeaderWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 15px;
-  border-bottom: 1px solid #d1d1d1;
+  padding: 15px 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 .sidebar {
   background-color: #ffffff;
@@ -35,12 +40,24 @@ main {
   align-items: center;
   padding: 15px 5px;
   justify-content: flex-start;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 .logo {
-  font-size: 25px;
+  /* font-size: 25px; */
+}
+.largeLogo {
+  display: block;
+  cursor: pointer;
 }
 
+.logoLine {
+  position: absolute;
+  bottom: -75%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: 1px solid #dedede;
+  width: 80%;
+}
 .links {
   display: flex;
   color: #4d8c52;
@@ -180,5 +197,52 @@ main {
   box-shadow: 0 0 0 0.2px rgb(77 140 31) !important;
 }
 
-.sibeBarWrapper {
+/* PaySlip Page */
+.cancelBtn {
+  background-color: #d1d1d1 !important;
+  color: #5d5d5d !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  padding: 5px 21px !important;
+  margin: 10px !important;
+}
+
+.cancelBtn:hover {
+  background-color: #e6e4e4 !important;
+  color: #5d5d5d !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  padding: 5px 21px !important;
+}
+.saveBtn {
+  background-color: #71a375 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  padding: 5px 21px !important;
+  margin: 10px !important;
+}
+.saveBtn:hover {
+  background-color: #81b985 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  padding: 5px 21px !important;
+}
+.closeX {
+  padding: 2px !important;
+  font-weight: 600 !important;
+  width: 25px !important;
+  border-radius: 50px !important;
+  /* color: #5d5d5d !important; */
+}
+.drawerTitle {
+  /* color: #5b5b5b !important; */
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
 }

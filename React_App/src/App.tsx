@@ -53,6 +53,7 @@ const App: React.FC = () => {
     setIsOpenMenu((prevMenuState) => !prevMenuState);
   };
 
+  // Dark Mode Function
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
@@ -60,6 +61,7 @@ const App: React.FC = () => {
     localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
   };
 
+  // If Darkmode means no change Refreshing time
   useEffect(() => {
     document.body.classList.toggle("dark-mode", darkMode);
   }, [darkMode]);
@@ -88,11 +90,14 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<LandingPage darkMode={darkMode} />} />
             <Route
-              path="/request_approvals"
+              path="/requestapprovals"
               element={<About darkMode={darkMode} />}
             />
-            <Route path="/reporting" element={<About darkMode={darkMode} />} />
-            <Route path="/generate" element={<About darkMode={darkMode} />} />
+            <Route path="/reports" element={<About darkMode={darkMode} />} />
+            <Route
+              path="/requestapprovals"
+              element={<About darkMode={darkMode} />}
+            />
 
             {/* Add more routes here if needed */}
           </Routes>

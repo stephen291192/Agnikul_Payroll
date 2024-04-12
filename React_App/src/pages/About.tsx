@@ -13,7 +13,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
     // }}
     >
       <div className="m-4">
-        <h2>Heading</h2>
+        <h2>Coming Soon...</h2>
       </div>
     </Box>
   );
