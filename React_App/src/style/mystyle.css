@@ -236,7 +236,7 @@ main {
 .closeX {
   padding: 2px !important;
   font-weight: 600 !important;
-  width: 25px !important;
+  min-width: 30px !important;
   border-radius: 50px !important;
   /* color: #5d5d5d !important; */
 }
@@ -246,3 +246,39 @@ main {
   font-weight: 600;
   text-align: center;
 }
+
+/* globalStyles.css */
+/* .MuiOutlinedInput-root fieldset {
+  border-color: #3f9747;
+  padding: 10px 10px;
+}
+
+.MuiOutlinedInput-root:hover fieldset {
+  border-color: #3f9747;
+}
+
+.MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #2d5831;
+} */
+
+/* globalStyles.css */
+/* .MuiOutlinedInput-root fieldset,
+.MuiOutlinedInput-root.MuiOutlinedInput-multiline fieldset,
+.MuiSelect-outlined.MuiSelect-outlined,
+.MuiInputBase-input.MuiOutlinedInput-input {
+  border-color: #3f9747;
+}
+
+.MuiOutlinedInput-root:hover fieldset,
+.MuiOutlinedInput-root.MuiOutlinedInput-multiline:hover fieldset,
+.MuiSelect-outlined.MuiSelect-outlined:hover,
+.MuiInputBase-input.MuiOutlinedInput-input:hover {
+  border-color: #3f9747;
+}
+
+.MuiOutlinedInput-root.Mui-focused fieldset,
+.MuiOutlinedInput-root.MuiOutlinedInput-multiline.Mui-focused fieldset,
+.MuiSelect-outlined.MuiSelect-outlined:focus,
+.MuiInputBase-input.MuiOutlinedInput-input:focus {
+  border-color: #2d5831;
+} */

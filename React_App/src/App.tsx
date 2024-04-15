@@ -4,13 +4,18 @@ import "./App.css";
 import "./style/mystyle.css";
 import "./pages/LandingPage.css";
 import "./style/animation.css";
+
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FrappeProvider } from "frappe-react-sdk";
 import Header from "./component/Header.tsx";
 import SideBar from "./component/SideBar.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import LandingPage from "./pages/LandingPage.tsx";
-
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(true);
@@ -74,9 +79,67 @@ const App: React.FC = () => {
     }
   }, []);
 
+  const themeColor = createTheme({
+    palette: {
+      primary: {
+        main: darkMode ? "#d1d1d1" : "#2D5831",
+      },
+    },
+    components: {
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            "& fieldset": {
+              borderColor: darkMode ? "#d1d1d1" : "",
+              color: darkMode ? "#d1d1d1" : "#000",
+            },
+            "&:hover fieldset": {
+              borderColor: darkMode ? "#d1d1d1" : "#3f9747",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: darkMode ? "#d1d1d1" : "#3f9747",
+            },
+            "& input::placeholder": {
+              color: darkMode ? "#d1d1d1" : "#000", // Set placeholder color to red when darkMode is true
+            },
+            "& input": {
+              color: darkMode ? "#d1d1d1" : "#000", // Set typing text color to red when darkMode is true
+            },
+          },
+        },
+      },
+      MuiInputLabel: {
+        styleOverrides: {
+          root: {
+            color: darkMode ? "#d1d1d1" : "#000", // Set input label color to red when darkMode is true
+          },
+        },
+      },
+      MuiInputBase: {
+        styleOverrides: {
+          input: {
+            "&::placeholder": {
+              color: darkMode ? "#d1d1d1" : "#000",
+            },
+            color: darkMode ? "#d1d1d1" : "#000",
+          },
+        },
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          root: {
+            color: darkMode ? "#d1d1d1" : "#000", // Set date picker icon color to red when darkMode is true
+          },
+        },
+      },
+    },
+  });
+
   return (
     <FrappeProvider socketPort={import.meta.env.VITE_SOCKET_PORT ?? ""}>
       <BrowserRouter>
+        {/* <ThemeColor darkMode={darkMode} /> */}
+        {/* <ThemeProvider theme={themeColor}> */}
         <Header
           darkMode={darkMode}
           isOpenMenu={isOpenMenu}
@@ -102,6 +165,8 @@ const App: React.FC = () => {
             {/* Add more routes here if needed */}
           </Routes>
         </SideBar>
+        {/* </ThemeProvider> */}
+        <ToastContainer />
       </BrowserRouter>
     </FrappeProvider>
   );

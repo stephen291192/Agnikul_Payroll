@@ -24,9 +24,12 @@
   font-size: 12px;
   display: flex;
   justify-content: end;
-  padding-right: 10px;
+  padding: 10px;
 }
 .listName {
   font-size: 12px;
   padding-left: 10px;
+}
+.css-46bh2p-MuiCardContent-root:last-child {
+  padding: 10px !important;
 }

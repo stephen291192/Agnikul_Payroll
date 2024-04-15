@@ -436,8 +436,8 @@ const SideBar: React.FC<SideBarProps> = ({
                       textDecoration: "none",
                       color: "inherit",
                       "&:hover": {
-                        bgcolor: "#f0f0f0",
-                        color: "#000",
+                        bgcolor: darkMode ? "#363636" : "#f0f0f0",
+                        color: darkMode ? "#fff" : "#000",
                       },
                     }}
                     onClick={subItem.onClick}

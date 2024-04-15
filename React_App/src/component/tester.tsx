@@ -1,139 +1,109 @@
-import React, { useState, useEffect } from "react";
-import { IoIosSearch } from "react-icons/io";
-import { IoSettingsOutline } from "react-icons/io5";
-import { VscBellDot } from "react-icons/vsc";
-import { IoMoonOutline } from "react-icons/io5";
-import avatarPic from "../assets/avatar.png";
-import Logo from "../assets/LogoAgnikul.png";
-import LogoSmall from "../assets/LogoSmall.png";
-interface HeaderProps {
+import * as React from "react";
+import { Dayjs } from "dayjs";
+import { Box, Button, TextField } from "@mui/material";
+import { DatePicker, DatePickerProps } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { TextFieldProps } from "@mui/material/TextField";
+
+interface AboutProps {
   darkMode: boolean;
-  isOpenMenu: boolean;
-  toggleDarkMode: () => void;
+  onCloseDrawer: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  darkMode,
-  toggleDarkMode,
-  isOpenMenu,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
+const PaySlip: React.FC<AboutProps> = ({ darkMode, onCloseDrawer }) => {
+  const [fromDate, setFromDate] = React.useState<Dayjs | null>(null);
+  const [toDate, setToDate] = React.useState<Dayjs | null>(null);
+  const [reason, setReason] = React.useState<string>("");
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (isOpen && !(e.target as HTMLElement).closest(".profile-dropdown")) {
-        setIsOpen(false);
-      }
-    };
+  const handleCancel = () => {
+    onCloseDrawer();
+  };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleEscKeyPress = (e: KeyboardEvent) => {
-      if (isOpen && e.key === "Escape") {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("keydown", handleEscKeyPress);
-    return () => {
-      document.removeEventListener("keydown", handleEscKeyPress);
-    };
-  }, [isOpen]);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const handleSubmit = () => {
+    // Handle submit logic
   };
 
   return (
-    <div className={darkMode ? "bg-gray-900 text-white" : "bg-white"}>
-      <div className="container mx-auto py-4 flex justify-between items-center border-b border-gray-300">
-        {/* <img className="pl-3" src={Logo} alt="Logo" width="180px" /> */}
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Box>
+        <div className="m-4">
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Box
+              flexGrow={1}
+              className="drawerTitle"
+              sx={{ color: darkMode ? "#fff" : "#5b5b5b" }}
+            >
+              Payment Request
+            </Box>
+            <Button
+              className="closeX"
+              sx={{ color: darkMode ? "#fff" : "#5b5b5b" }}
+              onClick={onCloseDrawer}
+            >
+              X
+            </Button>
+          </Box>
+          <br />
+          <br />
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Box width={{ xs: "100%", sm: "75%" }} marginBottom="16px">
+              <DatePicker
+                label="From"
+                value={fromDate}
+                onChange={(newValue) => setFromDate(newValue)}
+                renderInput={(params) => <TextField {...params} />}
+                fullWidth
+                InputLabelProps={{
+                  style: { fontSize: "14px" },
+                }}
+                variant="outlined"
+              />
+            </Box>
 
-        <div
-          style={{ display: isOpenMenu ? "block" : "none" }}
-          className="logo pl-3"
-        >
-          <img src={Logo} alt="Logo" width="200px" />
+            <Box width={{ xs: "100%", sm: "75%" }} marginBottom="16px">
+              <DatePicker
+                label="To"
+                value={toDate}
+                onChange={(newValue) => setToDate(newValue)}
+                renderInput={(params) => <TextField {...params} />}
+                fullWidth
+                InputLabelProps={{
+                  style: { fontSize: "14px" },
+                }}
+                variant="outlined"
+              />
+            </Box>
+
+            <Box width={{ xs: "100%", sm: "75%" }} marginBottom="16px">
+              <TextField
+                label="Reason"
+                multiline
+                rows={4}
+                variant="outlined"
+                value={reason}
+                onChange={(e) => setReason(e.target.value)}
+                fullWidth
+                InputLabelProps={{
+                  style: { fontSize: "14px" },
+                }}
+              />
+            </Box>
+
+            <Box sx={{ display: "flex" }}>
+              <Button className="cancelBtn" onClick={handleCancel}>
+                Cancel
+              </Button>
+
+              <Button className="saveBtn" onClick={handleSubmit}>
+                Submit
+              </Button>
+            </Box>
+          </Box>
         </div>
-        <div
-          style={{ display: isOpenMenu ? "none" : "block" }}
-          className="smallLogo pl-3"
-        >
-          <img src={LogoSmall} alt="Small Logo" />
-        </div>
-        {/* </div> */}
-        <div className="flex justify-end space-x-6 items-center">
-          <div className="flex items-center space-x-6 cursor-pointer">
-            <IoIosSearch
-              size={20}
-              className={darkMode ? "text-white" : "text-gray"}
-            />
-            <IoMoonOutline
-              size={20}
-              className={darkMode ? "text-white" : "text-gray"}
-              onClick={toggleDarkMode} // Add toggleDarkMode onClick
-            />
-            <VscBellDot
-              size={20}
-              className={darkMode ? "text-white" : "text-gray"}
-            />
-          </div>
-          <div className="relative inline-block pr-6">
-            <img
-              src={avatarPic}
-              alt="Avatar"
-              className={`h-10 w-10 rounded-full cursor-pointer ${
-                darkMode ? "bg-gray-200" : "bg-white"
-              }`}
-              onClick={toggleDropdown}
-            />
-            {isOpen && (
-              <div
-                className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg z-10 ${
-                  darkMode ? "bg-gray-800" : "bg-white"
-                }`}
-              >
-                <div className="py-1">
-                  <button
-                    className={`block w-full text-left px-4 py-2 text-sm ${
-                      darkMode
-                        ? "text-gray-200 hover:text-gray-700"
-                        : "text-gray-700"
-                    } hover:bg-gray-100`}
-                  >
-                    Profile
-                  </button>
-                  <button
-                    className={`block w-full text-left px-4 py-2 text-sm ${
-                      darkMode
-                        ? "text-gray-200 hover:text-gray-700"
-                        : "text-gray-700"
-                    } hover:bg-gray-100`}
-                  >
-                    Switch Desk
-                  </button>
-                  <button
-                    className={`block w-full text-left px-4 py-2 text-sm ${
-                      darkMode
-                        ? "text-gray-200 hover:text-gray-700"
-                        : "text-gray-700"
-                    } hover:bg-gray-100`}
-                  >
-                    Log Out
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+      </Box>
+    </LocalizationProvider>
   );
 };
 
-export default Header;
+export default PaySlip;

@@ -74,6 +74,7 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
               color: darkMode ? "#fff" : "#000",
               display: "flex",
               flexDirection: "column",
+
               height: "100%",
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
@@ -96,15 +97,16 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
             className="slideFromBottom"
             sx={{
               bgcolor: darkMode ? "#222222" : "#FFF",
-              color: darkMode ? "#fff" : "#000",
+              color: darkMode ? "#fff" : "#5B5B5B",
               display: "flex",
               flexDirection: "column",
               height: "100%",
+
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
           >
             <CardContent>
-              <Typography>No of Request</Typography>
+              <Typography sx={{ fontWeight: "600" }}>Payslip</Typography>
               <Typography color="textSecondary">
                 <img
                   src={Picture2}
@@ -128,7 +130,7 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
                 className="slideFromTop"
                 sx={{
                   bgcolor: darkMode ? "#222222" : "#FFF",
-                  color: darkMode ? "#fff" : "#000",
+                  color: darkMode ? "#fff" : "#5B5B5B",
                   display: "flex",
                   flexDirection: "column",
                   height: "100%",
@@ -136,13 +138,14 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
                 }}
               >
                 <CardContent>
-                  <p>Announcements</p>
+                  <p style={{ fontWeight: "600" }}>Announcements</p>
                   <span color="textSecondary" className="listName">
                     <li>Leave for Jan 20 2024 is Approved </li>
                     <li>Reimbursement Bill has to be attached clearly </li>
                     <li>Reimbursement Bill has to be attached clearly </li>
                     <li>Reimbursement Bill has to be attached clearly </li>
                   </span>
+
                   <span className="view">View All</span>
                 </CardContent>
               </Card>
@@ -154,7 +157,7 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
                 className="slideFromRight"
                 sx={{
                   bgcolor: darkMode ? "#222222" : "#FFF",
-                  color: darkMode ? "#fff" : "#000",
+                  color: darkMode ? "#fff" : "#5B5B5B",
                   display: "flex",
                   flexDirection: "column",
                   height: "100%",
@@ -162,12 +165,11 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
                 }}
               >
                 <CardContent>
-                  <p>Upcoming Holiday</p>
+                  <p style={{ fontWeight: "600" }}>Upcoming Holiday</p>
                   <span color="textSecondary" className="listName">
-                    <li>Leave for Jan 20 2024 is Approved </li>
-                    <li>Reimbursement Bill has to be attached clearly </li>
-                    <li>Reimbursement Bill has to be attached clearly </li>
-                    <li>Reimbursement Bill has to be attached clearly </li>
+                    <li>15 January Monday Pongal </li>
+                    <li>16 January Tuesday Thiruvalluvar day </li>
+                    <li>15 January Monday Pongal </li>
                   </span>
                   <span className="view">View All</span>
                 </CardContent>
