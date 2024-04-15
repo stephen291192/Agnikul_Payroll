@@ -114,7 +114,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               className="drawerTitle"
               sx={{ color: darkMode ? "#d1d1d1" : "#5b5b5b" }}
             >
-              Payslip Request 123
+              Payslip Request
             </Box>
             <Button
               className="closeX"
