@@ -163,7 +163,18 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
             <br />
             {/* .................Lessthan 4 Days...*/}
             {lessthan4Formshow && (
-              <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: {
+                    xs: "100%",
+                    sm: "100%",
+                    md: "100%",
+                  },
+                }}
+              >
                 <DatePicker
                   label={
                     <React.Fragment>
@@ -173,7 +184,14 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
                       </Typography>
                     </React.Fragment>
                   }
-                  renderInput={(params) => <TextField {...params} />}
+                  sx={{
+                    width: {
+                      xs: "100%",
+                      sm: "100%",
+                      md: "90%",
+                    },
+                  }}
+                  renderInput={(params) => <TextField fullWidth {...params} />}
                   variant="outlined"
                 />
               </Box>

@@ -482,12 +482,12 @@ const SideBar: React.FC<SideBarProps> = ({
           },
           "@media (max-width: 600px)": {
             "& .MuiPaper-root": {
-              width: "75%",
+              width: "80%",
             },
           },
           "@media (max-width: 1024px)": {
             "& .MuiPaper-root": {
-              width: "75%",
+              width: "85%",
             },
           },
         }}
