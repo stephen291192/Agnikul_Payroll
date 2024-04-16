@@ -8,3 +8,4 @@ node_modules/
 React_App/node_modules
 React_App.zip
 *.zip
+*node_modules
