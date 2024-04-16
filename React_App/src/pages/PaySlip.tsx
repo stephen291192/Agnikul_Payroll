@@ -24,6 +24,7 @@ interface PayslipProps {
 
 const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
   const [fromDate, setFromDate] = useState<Date | null>(null);
+
   const [toDate, setToDate] = useState<Date | null>(null);
   const [reason, setReason] = React.useState<string>("");
   const [reasonError, setReasonError] = React.useState<string>("");
@@ -154,6 +155,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
                 marginBottom="16px"
+                textAlign={"center"}
               >
                 <DatePicker
                   label={
@@ -183,6 +185,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
                 marginBottom="16px"
+                textAlign={"center"}
               >
                 <DatePicker
                   label={
@@ -213,6 +216,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
                 marginBottom="16px"
+                textAlign={"center"}
               >
                 <TextField
                   label={

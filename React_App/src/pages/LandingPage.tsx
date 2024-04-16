@@ -158,6 +158,7 @@ const LandingPage: React.FC<AboutProps> = ({ darkMode }) => {
                 sx={{
                   bgcolor: darkMode ? "#222222" : "#FFF",
                   color: darkMode ? "#fff" : "#5B5B5B",
+
                   display: "flex",
                   flexDirection: "column",
                   height: "100%",

@@ -33,6 +33,8 @@ const Accommodation: React.FC<AccommodationProps> = ({
         <br />
         <br />
         <Box display="flex" flexDirection="column" alignItems="center">
+          <p> Testing </p>
+
           <Box sx={{ display: "flex" }}>
             <Button className="cancelBtn" onClick={onCloseDrawer}>
               Cancel

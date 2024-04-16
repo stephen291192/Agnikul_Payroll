@@ -478,7 +478,7 @@ const SideBar: React.FC<SideBarProps> = ({
           "& .MuiPaper-root": {
             backgroundColor: darkMode ? "#222222" : "#FFF",
             color: darkMode ? "#fff" : "#000",
-            width: "40%",
+            width: "50%",
           },
           "@media (max-width: 600px)": {
             "& .MuiPaper-root": {

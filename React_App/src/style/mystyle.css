@@ -303,4 +303,11 @@ main {
   font-size: 12px;
   display: flex;
   font-weight: 500;
+  padding-left: 30px;
+}
+.Box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
