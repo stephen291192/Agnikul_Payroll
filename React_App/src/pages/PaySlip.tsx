@@ -5,7 +5,9 @@ import {
   TextField,
   InputLabel,
   ThemeProvider,
+  Typography,
 } from "@mui/material";
+
 import { createTheme } from "@mui/material/styles";
 
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -24,28 +26,10 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
   const [fromDate, setFromDate] = useState<Date | null>(null);
   const [toDate, setToDate] = useState<Date | null>(null);
   const [reason, setReason] = React.useState<string>("");
+  const [reasonError, setReasonError] = React.useState<string>("");
 
   const handleCancel = () => {
     onCloseDrawer();
-  };
-
-  const handleSubmit = () => {
-    toast.success("Payslip requested successfully");
-    onCloseDrawer();
-  };
-
-  const handleFromDateChange = (date: Date | null) => {
-    setFromDate(date);
-    if (toDate && date && date > toDate) {
-      setToDate(date);
-    }
-  };
-
-  const handleToDateChange = (date: Date | null) => {
-    if (date && fromDate && date < fromDate) {
-      return;
-    }
-    setToDate(date);
   };
 
   const themeColor = createTheme({
@@ -60,7 +44,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
           root: {
             "& fieldset": {
               borderColor: darkMode ? "#d1d1d1" : "",
-              color: darkMode ? "#d1d1d1" : "#000",
+              color: darkMode ? "#d1d1d1" : "#5b5b5b",
             },
             "&:hover fieldset": {
               borderColor: darkMode ? "#d1d1d1" : "#3f9747",
@@ -69,10 +53,10 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               borderColor: darkMode ? "#d1d1d1" : "#3f9747",
             },
             "& input::placeholder": {
-              color: darkMode ? "#d1d1d1" : "#000", // Set placeholder color to red when darkMode is true
+              color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set placeholder color to red when darkMode is true
             },
             "& input": {
-              color: darkMode ? "#d1d1d1" : "#000", // Set typing text color to red when darkMode is true
+              color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set typing text color to red when darkMode is true
             },
           },
         },
@@ -80,7 +64,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
       MuiInputLabel: {
         styleOverrides: {
           root: {
-            color: darkMode ? "#d1d1d1" : "#000", // Set input label color to red when darkMode is true
+            color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set input label color to red when darkMode is true
           },
         },
       },
@@ -88,21 +72,57 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
         styleOverrides: {
           input: {
             "&::placeholder": {
-              color: darkMode ? "#d1d1d1" : "#000",
+              color: darkMode ? "#d1d1d1" : "#5b5b5b",
             },
-            color: darkMode ? "#d1d1d1" : "#000",
+            color: darkMode ? "#d1d1d1" : "#5b5b5b",
           },
         },
       },
       MuiSvgIcon: {
         styleOverrides: {
           root: {
-            color: darkMode ? "#d1d1d1" : "#000", // Set date picker icon color to red when darkMode is true
+            color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set date picker icon color to red when darkMode is true
           },
         },
       },
     },
   });
+
+  // Validations
+
+  const handleSubmit = () => {
+    toast.success("Payslip requested successfully");
+    onCloseDrawer();
+  };
+
+  const handleFromDateChange = (date: Date | null) => {
+    setFromDate(date);
+    if (toDate && date && date > toDate) {
+      setToDate(date);
+    }
+    setToDate(null);
+    setReason("");
+    setReasonError("");
+  };
+
+  const handleToDateChange = (date: Date | null) => {
+    if (date && fromDate && date < fromDate) {
+      return;
+    }
+    setToDate(date);
+    setReason("");
+    setReasonError("");
+  };
+
+  const ReasonValidation = (e: any) => {
+    const data = e.target.value.trim();
+    if (data.length < 6) {
+      setReasonError("Reason should be 6 letters");
+    } else {
+      // setReason(e.target.value);
+      setReasonError("");
+    }
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -128,6 +148,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
           </Box>
           <br />
           <br />
+
           <Box display="flex" flexDirection="column" alignItems="center">
             <ThemeProvider theme={themeColor}>
               <Box
@@ -135,10 +156,16 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                 marginBottom="16px"
               >
                 <DatePicker
+                  label={
+                    <React.Fragment>
+                      From{" "}
+                      <Typography variant="code" className="CodeStar">
+                        *
+                      </Typography>
+                    </React.Fragment>
+                  }
                   required
-                  label="From"
                   value={fromDate}
-                  views={["month"]}
                   sx={{
                     width: {
                       xs: "100%",
@@ -146,6 +173,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                       md: "90%",
                     },
                   }}
+                  views={["month"]}
                   onChange={handleFromDateChange}
                   renderInput={(params) => <TextField {...params} />}
                   variant="outlined"
@@ -157,9 +185,16 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                 marginBottom="16px"
               >
                 <DatePicker
-                  label="To"
+                  label={
+                    <>
+                      To{" "}
+                      <Typography variant="code" className="CodeStar">
+                        *
+                      </Typography>
+                    </>
+                  }
+                  required
                   value={toDate}
-                  views={["month"]} // Restrict to monthly selection
                   sx={{
                     width: {
                       xs: "100%",
@@ -167,11 +202,11 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                       md: "90%",
                     },
                   }}
+                  views={["month"]}
                   minDate={fromDate}
                   onChange={handleToDateChange}
                   disabled={!fromDate}
                   renderInput={(params) => <TextField {...params} />}
-                  placeholder="Month"
                   variant="outlined"
                 />
               </Box>
@@ -180,7 +215,14 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                 marginBottom="16px"
               >
                 <TextField
-                  label="Reason"
+                  label={
+                    <React.Fragment>
+                      Reason{" "}
+                      <Typography variant="code" className="CodeStar">
+                        *
+                      </Typography>
+                    </React.Fragment>
+                  }
                   multiline
                   rows={4}
                   variant="outlined"
@@ -193,9 +235,11 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                       md: "90%",
                     },
                   }}
-                  minDate={fromDate}
-                  onChange={(e) => setReason(e.target.value)}
+                  onChange={(e) => {
+                    ReasonValidation(e), setReason(e.target.value);
+                  }}
                 />
+                <span className="ErrorMsg">{reasonError}</span>
               </Box>
             </ThemeProvider>
             <Box sx={{ display: "flex" }}>
@@ -204,7 +248,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               </Button>
 
               <Button
-                disabled={!fromDate || !toDate || !reason}
+                disabled={!fromDate || !toDate || !reason || reasonError}
                 className="saveBtn"
                 onClick={handleSubmit}
               >

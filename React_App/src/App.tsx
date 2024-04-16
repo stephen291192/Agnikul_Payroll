@@ -16,6 +16,9 @@ import SideBar from "./component/SideBar.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import LandingPage from "./pages/LandingPage.tsx";
+import ThemeColor from "./component/ThemeColor.tsx";
+import Leave from "./pages/Leave.tsx";
+
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(true);
@@ -140,6 +143,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         {/* <ThemeColor darkMode={darkMode} /> */}
         {/* <ThemeProvider theme={themeColor}> */}
+
         <Header
           darkMode={darkMode}
           isOpenMenu={isOpenMenu}

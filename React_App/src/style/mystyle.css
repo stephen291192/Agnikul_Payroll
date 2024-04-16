@@ -224,6 +224,7 @@ main {
   text-transform: capitalize !important;
   padding: 5px 21px !important;
   margin: 10px !important;
+  cursor: pointer;
 }
 .saveBtn:hover {
   background-color: #81b985 !important;
@@ -233,6 +234,17 @@ main {
   text-transform: capitalize !important;
   padding: 5px 21px !important;
 }
+.saveBtn:disabled {
+  background-color: #e6e4e4 !important;
+  color: #b6b5b5 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: capitalize !important;
+  padding: 5px 21px !important;
+  margin: 10px !important;
+  cursor: not-allowed !important;
+}
+
 .closeX {
   padding: 2px !important;
   font-weight: 600 !important;
@@ -282,3 +294,13 @@ main {
 .MuiInputBase-input.MuiOutlinedInput-input:focus {
   border-color: #2d5831;
 } */
+
+.CodeStar {
+  color: #d30707;
+}
+.ErrorMsg {
+  color: #d30707;
+  font-size: 12px;
+  display: flex;
+  font-weight: 500;
+}
