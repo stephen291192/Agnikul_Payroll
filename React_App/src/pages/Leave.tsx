@@ -61,6 +61,7 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
       toast.warning("Selected To time must be greater than From time");
     }
   };
+
   React.useEffect(() => {
     if (fromTime && toTime) {
       const duration = dayjs(toTime).diff(fromTime, "hour", true); // Calculate the duration in hours between fromTime and toTime
