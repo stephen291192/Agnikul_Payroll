@@ -164,8 +164,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
             <ThemeProvider theme={ThemeColor}>
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
-                marginBottom="16px"
-                textAlign={"center"}
+                marginBottom="16px" textAlign={"center"}
               >
                 <DatePicker
                   label={
@@ -194,8 +193,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
 
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
-                marginBottom="16px"
-                textAlign={"center"}
+                marginBottom="16px"textAlign={"center"}
               >
                 <DatePicker
                   label={
@@ -225,8 +223,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               </Box>
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
-                marginBottom="16px"
-                textAlign={"center"}
+                marginBottom="16px"textAlign={"center"}
               >
                 <TextField
                   label={
