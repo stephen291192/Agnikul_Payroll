@@ -33,7 +33,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
     onCloseDrawer();
   };
 
-  const themeColor = createTheme({
+  const ThemeColor = createTheme({
     palette: {
       primary: {
         main: darkMode ? "#d1d1d1" : "#2D5831",
@@ -45,7 +45,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
           root: {
             "& fieldset": {
               borderColor: darkMode ? "#d1d1d1" : "",
-              color: darkMode ? "#d1d1d1" : "#5b5b5b",
+              color: darkMode ? "#d1d1d1" : "#000",
             },
             "&:hover fieldset": {
               borderColor: darkMode ? "#d1d1d1" : "#3f9747",
@@ -54,7 +54,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
               borderColor: darkMode ? "#d1d1d1" : "#3f9747",
             },
             "& input::placeholder": {
-              color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set placeholder color to red when darkMode is true
+              color: darkMode ? "#d1d1d1" : "#000", // Set placeholder color to red when darkMode is true
             },
             "& input": {
               color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set typing text color to red when darkMode is true
@@ -73,16 +73,26 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
         styleOverrides: {
           input: {
             "&::placeholder": {
-              color: darkMode ? "#d1d1d1" : "#5b5b5b",
+              color: darkMode ? "#d1d1d1" : "#000",
             },
             color: darkMode ? "#d1d1d1" : "#5b5b5b",
           },
         },
       },
+
       MuiSvgIcon: {
         styleOverrides: {
           root: {
             color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set date picker icon color to red when darkMode is true
+          },
+        },
+      },
+      MuiRadio: {
+        styleOverrides: {
+          root: {
+            "&$checked": {
+              color: "#d1d1d1", // Change the border color when the radio button is checked
+            },
           },
         },
       },
@@ -151,7 +161,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
           <br />
 
           <Box display="flex" flexDirection="column" alignItems="center">
-            <ThemeProvider theme={themeColor}>
+            <ThemeProvider theme={ThemeColor}>
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
                 marginBottom="16px"

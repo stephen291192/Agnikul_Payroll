@@ -13,7 +13,6 @@ import {
 import React, { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
@@ -33,7 +32,9 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
   const [fromTime, setFromTime] = React.useState(null);
   const [toTime, setToTime] = React.useState(null);
   const [totalHours, setTotalHours] = React.useState<number | null>(null);
+  const [reason, setReason] = React.useState<string>("");
   const [reasonError, setReasonError] = React.useState<string>("");
+
   const [btnShow, setBtnShow] = useState(false);
 
   const handleOptionChange = (event: any) => {
@@ -42,7 +43,7 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
   };
   const handleLessthan4Change = () => {
     setLessthan4Formshow(true);
-    setMorethan4Formshow(false); // Ensure only one form is shown at a time
+    setMorethan4Formshow(false);
   };
 
   const handleMorethan4Change = () => {
@@ -50,8 +51,18 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
     setLessthan4Formshow(false); // Ensure only one form is shown at a time
   };
 
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setFromTime(null);
+    setToTime(null);
+    setTotalHours(null);
+    setReason("");
+  };
   const FromTimeChangeFun = (time) => {
     setFromTime(time);
+    setToTime(null);
+    setTotalHours(null);
+    setReason("");
   };
 
   const ToTimeChangeFun = (newTime: Date | null) => {
@@ -59,17 +70,10 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
       setToTime(newTime);
     } else {
       toast.warning("Selected To time must be greater than From time");
+      setTotalHours(null);
     }
   };
 
-  React.useEffect(() => {
-    if (fromTime && toTime) {
-      const duration = dayjs(toTime).diff(fromTime, "hour", true); // Calculate the duration in hours between fromTime and toTime
-      setTotalHours(duration); // Set the total hours
-    } else {
-      setTotalHours(null); // If either fromTime or toTime is null, set total hours to null
-    }
-  }, [fromTime, toTime]);
   // Validation
   const ReasonValidation = (e: any) => {
     const data = e.target.value.trim();
@@ -83,8 +87,23 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
 
   const today = dayjs();
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  // Total Hours
+  React.useEffect(() => {
+    if (fromTime && toTime) {
+      const duration = dayjs(toTime).diff(fromTime, "minute"); // Calculate the duration in minutes between fromTime and toTime
+      const hours = Math.floor(duration / 60); // Extract hours from total minutes
+      const minutes = duration % 60; // Extract remaining minutes
+      const totalHours = hours + minutes / 60; // Combine hours and minutes into total hours
+      setTotalHours(totalHours); // Set the total hours
+    } else {
+      setTotalHours(null); // If either fromTime or toTime is null, set total hours to null
+    }
+  }, [fromTime, toTime]);
+
+  // Save Function
+  const handleSubmit = () => {
+    toast.success("Leave requested successfully");
+    onCloseDrawer();
   };
 
   const ThemeColor = createTheme({
@@ -111,7 +130,7 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
               color: darkMode ? "#d1d1d1" : "#000", // Set placeholder color to red when darkMode is true
             },
             "& input": {
-              color: darkMode ? "#d1d1d1" : "#000", // Set typing text color to red when darkMode is true
+              color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set typing text color to red when darkMode is true
             },
           },
         },
@@ -119,7 +138,7 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
       MuiInputLabel: {
         styleOverrides: {
           root: {
-            color: darkMode ? "#d1d1d1" : "#000", // Set input label color to red when darkMode is true
+            color: darkMode ? "#d1d1d1" : "#5b5b5b", // Set input label color to red when darkMode is true
           },
         },
       },
@@ -129,7 +148,7 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
             "&::placeholder": {
               color: darkMode ? "#d1d1d1" : "#000",
             },
-            color: darkMode ? "#d1d1d1" : "#000",
+            color: darkMode ? "#d1d1d1" : "#5b5b5b",
           },
         },
       },
@@ -306,7 +325,9 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
                     disabled={!selectedDate || !fromTime || !toTime}
                     value={
                       totalHours !== null
-                        ? `${totalHours.toFixed(2)} hours`
+                        ? `${Math.floor(totalHours)} hours ${Math.round(
+                            (totalHours % 1) * 60
+                          )} minutes`
                         : ""
                     }
                   />
@@ -337,7 +358,13 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
                     multiline
                     rows={4}
                     variant="outlined"
-                    onChange={ReasonValidation}
+                    value={reason}
+                    onChange={(e) => {
+                      ReasonValidation(e), setReason(e.target.value);
+                    }}
+                    disabled={
+                      !selectedDate || !fromTime || !toTime || !totalHours
+                    }
                   />
                 </Box>
                 <span className="ErrorMsg">{reasonError}</span>
@@ -365,6 +392,7 @@ const Leave: React.FC<LeaveProps> = ({ darkMode, onCloseDrawer }) => {
                   !totalHours ||
                   reasonError
                 }
+                onClick={handleSubmit}
               >
                 Submit
               </Button>
