@@ -311,3 +311,8 @@ main {
   align-items: center;
   margin: 0 auto;
 }
+.Box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
