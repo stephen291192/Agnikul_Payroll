@@ -3,19 +3,15 @@ import {
   Box,
   Button,
   TextField,
-  InputLabel,
   ThemeProvider,
   Typography,
 } from "@mui/material";
 
 import { createTheme } from "@mui/material/styles";
-
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { ToastContainer, toast } from "react-toastify";
-
-// import ThemeColor from "../component/ThemeColor";
+import { toast } from "react-toastify";
 
 interface PayslipProps {
   darkMode: boolean;
@@ -23,11 +19,11 @@ interface PayslipProps {
 }
 
 const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
-  const [fromDate, setFromDate] = useState<Date | null>(null);
+  const [fromDate, setFromDate] = useState(null);
 
-  const [toDate, setToDate] = useState<Date | null>(null);
-  const [reason, setReason] = React.useState<string>("");
-  const [reasonError, setReasonError] = React.useState<string>("");
+  const [toDate, setToDate] = useState(null);
+  const [reason, setReason] = useState("");
+  const [reasonError, setReasonError] = useState("");
 
   const handleCancel = () => {
     onCloseDrawer();
@@ -62,6 +58,19 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
           },
         },
       },
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#EFFFEF !important",
+            color: darkMode ? "#5b5b5b" : "#5b5b5b", // Set typing text color to red when darkMode is true
+            "&:hover": {
+              backgroundColor: "#4D8C52 !important",
+              color: "#fff !important",
+            },
+          },
+        },
+      },
+
       MuiInputLabel: {
         styleOverrides: {
           root: {
@@ -106,7 +115,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
     onCloseDrawer();
   };
 
-  const handleFromDateChange = (date: Date | null) => {
+  const handleFromDateChange = (date: any) => {
     setFromDate(date);
     if (toDate && date && date > toDate) {
       setToDate(date);
@@ -116,7 +125,7 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
     setReasonError("");
   };
 
-  const handleToDateChange = (date: Date | null) => {
+  const handleToDateChange = (date: any) => {
     if (date && fromDate && date < fromDate) {
       return;
     }
@@ -164,18 +173,15 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
             <ThemeProvider theme={ThemeColor}>
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
-                marginBottom="16px" textAlign={"center"}
+                marginBottom="16px"
+                textAlign={"center"}
               >
                 <DatePicker
                   label={
-                    <React.Fragment>
-                      From{" "}
-                      <Typography variant="code" className="CodeStar">
-                        *
-                      </Typography>
-                    </React.Fragment>
+                    <Typography>
+                      From <code className="CodeStar">*</code>
+                    </Typography>
                   }
-                  required
                   value={fromDate}
                   sx={{
                     width: {
@@ -186,25 +192,22 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                   }}
                   views={["month"]}
                   onChange={handleFromDateChange}
-                  renderInput={(params) => <TextField {...params} />}
+                  renderInput={(params: any) => <TextField {...params} />}
                   variant="outlined"
                 />
               </Box>
 
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
-                marginBottom="16px"textAlign={"center"}
+                marginBottom="16px"
+                textAlign={"center"}
               >
                 <DatePicker
                   label={
-                    <>
-                      To{" "}
-                      <Typography variant="code" className="CodeStar">
-                        *
-                      </Typography>
-                    </>
+                    <Typography>
+                      To <code className="CodeStar"> *</code>
+                    </Typography>
                   }
-                  required
                   value={toDate}
                   sx={{
                     width: {
@@ -217,22 +220,20 @@ const PaySlip: React.FC<PayslipProps> = ({ darkMode, onCloseDrawer }) => {
                   minDate={fromDate}
                   onChange={handleToDateChange}
                   disabled={!fromDate}
-                  renderInput={(params) => <TextField {...params} />}
+                  renderInput={(params: any) => <TextField {...params} />}
                   variant="outlined"
                 />
               </Box>
               <Box
                 width={{ xs: "100%", sm: "100%", md: "90%" }}
-                marginBottom="16px"textAlign={"center"}
+                marginBottom="16px"
+                textAlign={"center"}
               >
                 <TextField
                   label={
-                    <React.Fragment>
-                      Reason{" "}
-                      <Typography variant="code" className="CodeStar">
-                        *
-                      </Typography>
-                    </React.Fragment>
+                    <Typography>
+                      Reason <code className="CodeStar"> *</code>
+                    </Typography>
                   }
                   multiline
                   rows={4}
