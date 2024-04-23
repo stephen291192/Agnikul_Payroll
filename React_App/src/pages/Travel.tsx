@@ -525,7 +525,9 @@ const Travel: React.FC<AccommodationProps> = ({ darkMode, onCloseDrawer }) => {
                     !fromTime ||
                     !toTime ||
                     !modeofTravel ||
-                    !reasonforTravel
+                    !reasonforTravel ||
+                    mobileError ||
+                    nameError
                   }
                   onClick={Submit}
                 >
