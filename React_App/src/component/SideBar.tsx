@@ -227,7 +227,7 @@ const SideBar: React.FC<SideBarProps> = ({
       // icon: <img src={iconPic3} alt="Leave Tracker Icon" />,
     },
     {
-      path: "TrackRequest",
+      path: "trackrequest",
       name: "Track Request",
       icon: <TbFocus2 />,
       // onClick: () => toggleDrawer(true),
@@ -362,6 +362,7 @@ const SideBar: React.FC<SideBarProps> = ({
               }}
               sx={{
                 display: "flex",
+
                 alignItems: "center",
                 textDecoration: "none",
                 // color: "red",
@@ -393,11 +394,12 @@ const SideBar: React.FC<SideBarProps> = ({
             >
               <div>
                 {!isOpenMenu ? (
-                  <div className="icon">{item.icon}</div>
+                  <div className="menuicon">{item.icon}</div>
                 ) : (
                   <Box
-                    className="icon"
+                    className="menuicons"
                     sx={{
+                      padding: "5px",
                       // width: "200px",
                       // backgroundColor: "red",
                       // display: "flex",
@@ -459,7 +461,7 @@ const SideBar: React.FC<SideBarProps> = ({
           bgcolor: darkMode ? "#222222" : "#effaef",
           paddingTop: "64px", // Assuming the height of the header is 64px
           paddingLeft: isOpenMenu ? (isMobile ? "20px" : "230px") : "20px",
-          height: "calc(100vh - 64px)",
+          // height: "calc(100vh - 64px)",
           overflowY: "auto",
         }}
       >

@@ -5,6 +5,8 @@ import "./style/mystyle.css";
 import "./pages/LandingPage.css";
 import "./style/animation.css";
 
+import "@coreui/coreui-pro/dist/css/coreui.min.css";
+
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -18,7 +20,7 @@ import About from "./pages/About";
 import LandingPage from "./pages/LandingPage.tsx";
 import ThemeColor from "./component/ThemeColor.tsx";
 import Leave from "./pages/Leave.tsx";
-
+import TrackRequest from "./pages/TrackRequest.tsx";
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(true);
@@ -164,6 +166,10 @@ const App: React.FC = () => {
             <Route
               path="/requestapprovals"
               element={<About darkMode={darkMode} />}
+            />
+            <Route
+              path="/trackrequest"
+              element={<TrackRequest darkMode={darkMode} />}
             />
 
             {/* Add more routes here if needed */}

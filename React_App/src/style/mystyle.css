@@ -5,7 +5,7 @@
 }
 body {
   background-color: #effaef !important;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 main {
   padding: 20px 25px;
@@ -80,9 +80,15 @@ main {
   font-weight: 500;
 }
 
-.icon {
-  font-size: 20px;
-  padding: 10px;
+.menuicon {
+  font-size: 22px !important;
+  padding: 5px 10px !important;
+  /* width: 45px !important;
+  height: 40px !important; */
+  /* font-size: ; */
+}
+.menuicons {
+  font-size: 22px !important;
 }
 .menuName {
   font-size: 16px;
@@ -91,6 +97,7 @@ main {
   left: 10px;
   /* color: #5b5b5b; */
   font-weight: 600;
+  /* display: flex; */
 }
 .submenuName1 {
   padding: 10px 30px;
@@ -315,4 +322,17 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.red-border {
+  border: 1px solid; /* Set the border color to red */
+}
+.ActionData {
+  display: flex !important;
+  justify-content: space-around;
+}
+.viewicon {
+  cursor: pointer;
+}
+.editicon {
+  cursor: pointer;
 }
