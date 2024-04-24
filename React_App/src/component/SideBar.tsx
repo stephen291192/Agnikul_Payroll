@@ -234,7 +234,7 @@ const SideBar: React.FC<SideBarProps> = ({
       // icon: <img src={iconPic4} alt="Payslip Icon" />,
     },
     {
-      path: "/LeaveTracker",
+      path: "/leavetracker",
       name: "Leave Tracker",
       icon: <LuCalendarDays />,
       // icon: <img src={iconPic5} alt="Payslip Icon" />,
@@ -263,7 +263,7 @@ const SideBar: React.FC<SideBarProps> = ({
     //   icon: <RiFocus3Line />,
     // },
     {
-      path: "/Bills",
+      path: "/bills",
       name: "Bills",
       icon: <VscNote />,
       // icon: <img src={iconPic8} alt="Payslip Icon" />,

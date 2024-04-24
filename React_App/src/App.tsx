@@ -21,6 +21,9 @@ import LandingPage from "./pages/LandingPage.tsx";
 import ThemeColor from "./component/ThemeColor.tsx";
 import Leave from "./pages/Leave.tsx";
 import TrackRequest from "./pages/TrackRequest.tsx";
+import LeaveTracker from "./pages/LeaveTracker.tsx";
+import Bills from "./pages/Bills.tsx";
+
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(true);
@@ -171,6 +174,11 @@ const App: React.FC = () => {
               path="/trackrequest"
               element={<TrackRequest darkMode={darkMode} />}
             />
+            <Route
+              path="/leavetracker"
+              element={<LeaveTracker darkMode={darkMode} />}
+            />
+            <Route path="/bills" element={<Bills darkMode={darkMode} />} />
 
             {/* Add more routes here if needed */}
           </Routes>

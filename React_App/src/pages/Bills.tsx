@@ -13,14 +13,12 @@ import {
   MdOutlineModeEdit,
 } from "react-icons/md";
 import { toast } from "react-toastify";
-import { it } from "date-fns/locale";
-import { border } from "@mui/system";
 
-interface TrackRequestProps {
+interface BillsProps {
   darkMode: boolean;
 }
 
-const TrackRequest: React.FC<TrackRequestProps> = ({ darkMode }) => {
+const Bills: React.FC<BillsProps> = ({ darkMode }) => {
   const usersData = [
     {
       S_no: "1",
@@ -180,11 +178,11 @@ const TrackRequest: React.FC<TrackRequestProps> = ({ darkMode }) => {
           cleaner
           clickableRows
           columns={columns}
-          columnFilter
+          // columnFilter
           columnSorter
           items={details}
-          itemsPerPageSelect
-          itemsPerPage={5}
+          // itemsPerPageSelect
+          itemsPerPage={10}
           pagination
           //   selectable
           tableFilter
@@ -210,9 +208,6 @@ const TrackRequest: React.FC<TrackRequestProps> = ({ darkMode }) => {
                         DataFun(item);
                       }}
                     />
-                  </div>
-                  <div className="editicon">
-                    <MdOutlineModeEdit size={20} onClick={ViewFunction} />
                   </div>
                 </td>
               );
@@ -344,4 +339,4 @@ const TrackRequest: React.FC<TrackRequestProps> = ({ darkMode }) => {
   );
 };
 
-export default TrackRequest;
+export default Bills;

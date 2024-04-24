@@ -324,7 +324,7 @@ main {
   align-items: center;
 }
 .red-border {
-  border: 1px solid; /* Set the border color to red */
+  /* border: 1px solid; */
 }
 .ActionData {
   display: flex !important;
@@ -335,4 +335,11 @@ main {
 }
 .editicon {
   cursor: pointer;
+}
+.tableData {
+  text-align: center;
+
+  font-size: 14px;
+  border-left: 1px solid #f0e8e8;
+  border-right: 1px solid #f0e8e8;
 }
